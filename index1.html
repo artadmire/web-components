@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <template id="web-button-template">
+        <style>
+            .btn {
+                color: red;
+            }
+            .btn.info {
+                border-style: solid;
+                border-radius: 4px;
+                color: #fff;
+                background-color: #298dff;
+                border-color: #298dff;
+            }
+            .btn.success {
+                border-style: solid;
+                border-radius: 4px;
+                color: #fff;
+                background-color: #1abe6b;
+                border-color: #1abe6b;
+            }
+        </style>
+        <button class="btn">
+            提交
+            <slot name="icon"></slot>
+        </button>
+    </template>
+    <web-button data-type="info">
+        <span slot="icon" >&spades;</span>
+    </web-button>
+    <web-button data-type="success"></web-button>
+    <button class="btn">重置</button>
+</body>
+<script src="./components/WebButton.js"></script>
+</html>

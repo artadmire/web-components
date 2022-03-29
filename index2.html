@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function polyfill() {
+            function supportImport() {
+                return 'import' in document.createElement('link');
+            }
+            if (supportImport()) {
+                console.log('浏览器支持import特性');
+            } else {
+                console.log('浏览器不支持import特性');
+                // 引入polyfill
+               
+            }
+        }
+        window.onload = function() {
+            polyfill()
+        }
+        
+    </script>
+    <link rel="import" href="./components/button.html" />
+</head>
+<body>
+    <web-button data-type="info">
+        <span slot="icon" >&spades;</span>
+    </web-button>
+    <web-button data-type="success"></web-button>
+    <button class="btn">重置</button>
+</body>
+
+</html>

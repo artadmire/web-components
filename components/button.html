@@ -1,0 +1,51 @@
+
+<template id="web-button-template">
+    <style>
+        .btn {
+            color: red;
+        }
+        .btn.info {
+            border-style: solid;
+            border-radius: 4px;
+            color: #fff;
+            background-color: #298dff;
+            border-color: #298dff;
+        }
+        .btn.success {
+            border-style: solid;
+            border-radius: 4px;
+            color: #fff;
+            background-color: #1abe6b;
+            border-color: #1abe6b;
+        }
+    </style>
+    <button class="btn">
+        提交
+        <slot name="icon"></slot>
+    </button>
+</template>
+
+<script>
+    const prefix = 'data-'
+    console.log(customElements)
+    class WebButton extends HTMLElement {
+        constructor(props) {
+            super(props);
+            this.render();
+        }
+        render() {
+            console.log(this)
+            this.attachShadow({ mode: 'open' })
+            const tem = document.getElementById('web-button-template');
+            const clonedElem = tem.content.cloneNode(true);
+            const btn = clonedElem.querySelector('.btn');
+            btn.className = btn.className + " " + this.getAttribute(`${prefix}type`);
+            btn.addEventListener('click', this.click)
+            this.shadowRoot.appendChild(clonedElem);
+        }
+        click() {
+            console.log('btn click')
+        }
+    }
+    customElements.define('web-button', WebButton)
+</script>
